@@ -254,25 +254,57 @@ This is called **chroma subsampling**.
 
 The reason it works is that our eyes usually notice brightness detail more than small color differences.
 
-So JPEG can keep the Y channel at higher detail while reducing some of the Cb and Cr detail.
+JPEG usually converts an image from RGB into YCbCr:
 
-A common format is:
+Y = brightness
+Cb = blue-ish color information
+Cr = red-ish color information
 
-```text
-4:2:0
+Our eyes are much more sensitive to changes in brightness than to tiny changes in color. So JPEG keeps more detail for Y but it can reduce the resolution of Cb and Cr.
 ```
+Example: imagine 4 pixels in a row.
 
-For now I do not need to memorize all the notation behind 4:2:0.
+For brightness, JPEG might keep all 4 values:
 
-The useful idea is simply:
-
-```text
-Y  = more detail
-Cb = less detail
-Cr = less detail
+Y:   120  125  130  128
 ```
+For color, instead of storing 4 separate Cb values and 4 separate Cr values, it might store fewer samples and let nearby pixels share them.
 
-This matters later because the way these blocks are grouped affects the size of an MCU.
+So conceptually:
+```
+Brightness:
+Y1  Y2  Y3  Y4
+
+Color:
+Cb1     Cb2
+Cr1     Cr2
+```
+That is the idea of chroma subsampling: fewer color samples, while brightness stays more detailed.
+
+For 4:2:0, think of a 2×2 group of pixels:
+```
+Pixel 1   Pixel 2
+Pixel 3   Pixel 4
+```
+Each pixel still has its own brightness value:
+```
+Y1   Y2
+Y3   Y4
+```
+But those 4 pixels can share one Cb value and one Cr value:
+```
+Cb1 shared by all 4
+Cr1 shared by all 4
+```
+So instead of storing:
+```
+4 Y + 4 Cb + 4 Cr
+```
+we store roughly:
+```
+4 Y + 1 Cb + 1 Cr
+```
+That saves a lot of space. This is why, in JPEG 4:2:0, a larger image area can be represented by multiple Y blocks but fewer Cb/Cr blocks. And that is what leads to the 16×16 MCU structure the first paper is discussing.
 
 ---
 
