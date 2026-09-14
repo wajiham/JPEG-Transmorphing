@@ -20,8 +20,8 @@ The goal is to build a clear foundation in how JPEG images are represented, comp
 
 ## Structure
 
-- `notes/jpeg-background.md` — all JPEG background notes in one place
-- `research/paper-notes.md` — notes from research papers.
-- `experiments/` — practical experiments later on
+- `notes/jpeg-background.md` 
+- `research/paper-notes.md` 
+- `experiments/` 
 
 The repo is still a work in progress.
