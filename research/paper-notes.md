@@ -316,9 +316,9 @@ Higher threshold
 
 This is the balance the paper is trying to achieve. The goal is not simply to maximize reconstruction quality or minimize file size. It is to find a useful point between the two.
 # Mask Matrix Generation Step-by-step
-![Mask Matrix](./images/3-ideas-in-mask-matrix-generation)
+![Mask Matrix](./images/3-ideas-in-mask-matrix-generation.png)
 
 ## Step-by-step JPEG Transmorphing
-![Transmorphing1](./images/JPEG-Transmorphing-pt1)
-![Transmorphing2](./images/JPEG-Transmorphing-pt2)
+![Transmorphing1](./images/JPEG-Transmorphing-pt1.png)
+![Transmorphing2](./images/JPEG-Transmorphing-pt2.png)
 
