@@ -308,15 +308,13 @@ That saves a lot of space. This is why, in JPEG 4:2:0, a larger image area can b
 
 MCU means **Minimum Coded Unit**.
 
-This confused me at first because JPEG also uses 8×8 blocks.
-
-They are related, but they are not the same thing.
+This confused me at first because JPEG also uses 8×8 blocks. They are related, but they are not the same thing.
 
 An 8×8 block is the block used for DCT.
 
 An MCU is a group of JPEG blocks that are handled together.
 
-With 4:2:0 chroma subsampling, one MCU can cover a 16×16 area of the image.
+With 4:2:0 chroma subsampling, one MCU can cover a 16×16 area of the image (The MCU size depends on the chroma subsampling scheme).
 
 So I need to keep this distinction clear:
 
