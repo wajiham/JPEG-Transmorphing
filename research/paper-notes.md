@@ -1,5 +1,5 @@
 # Paper notes
-[IMAGE TRANSMORPHING WITH JPEG] BY LIN YUAN & TOURADJ IBRAHIMI
+**Paper1: IMAGE TRANSMORPHING WITH JPEG BY LIN YUAN & TOURADJ IBRAHIMI**
 
 These are the main concepts I needed to understand before going through the transmorphing method in detail.
 
