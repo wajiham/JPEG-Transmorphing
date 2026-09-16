@@ -315,8 +315,8 @@ Higher threshold
 ```
 
 This is the balance the paper is trying to achieve. The goal is not simply to maximize reconstruction quality or minimize file size. It is to find a useful point between the two.
-```
-```
+
+
 # Mask Matrix Generation Step-by-step
 The sub-image give us "what to store" where as the matrix mask give us the info on where to restore that data (the position).
 A simple example:
