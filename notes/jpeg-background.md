@@ -327,6 +327,8 @@ This becomes important in transmorphing because if a change affects part of an M
 
 ---
 
+![Chroma Sampling and MCU ("Chroma Sampling.png")
+
 ## JPEG file structure
 
 A JPEG file is made up of different sections identified by markers.
