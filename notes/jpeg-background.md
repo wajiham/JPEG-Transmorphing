@@ -248,11 +248,7 @@ Quantization = loses precision
 
 ## Chroma subsampling
 
-After converting RGB to YCbCr, JPEG can reduce some of the color information.
-
-This is called **chroma subsampling**.
-
-The reason it works is that our eyes usually notice brightness detail more than small color differences.
+After converting RGB to YCbCr, JPEG can reduce some of the color information. This is called chroma subsampling. The reason it works is that our eyes usually notice brightness detail more than small color differences.
 
 JPEG usually converts an image from RGB into YCbCr:
 
@@ -262,7 +258,7 @@ Cr = red-ish color information
 
 Our eyes are much more sensitive to changes in brightness than to tiny changes in color. So JPEG keeps more detail for Y but it can reduce the resolution of Cb and Cr.
 ```
-Example: imagine 4 pixels in a row.
+Example: 4 pixels in a row.
 
 For brightness, JPEG might keep all 4 values:
 
@@ -279,9 +275,9 @@ Color:
 Cb1     Cb2
 Cr1     Cr2
 ```
-That is the idea of chroma subsampling: fewer color samples, while brightness stays more detailed.
+That is the main idea of chroma subsampling: fewer color samples, while brightness stays more detailed.
 
-For 4:2:0, think of a 2×2 group of pixels:
+For 4:2:0, it is a 2×2 group of pixels:
 ```
 Pixel 1   Pixel 2
 Pixel 3   Pixel 4
