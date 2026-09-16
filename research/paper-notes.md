@@ -315,10 +315,29 @@ Higher threshold
 ```
 
 This is the balance the paper is trying to achieve. The goal is not simply to maximize reconstruction quality or minimize file size. It is to find a useful point between the two.
+```
+```
 # Mask Matrix Generation Step-by-step
-![Mask Matrix](./images/3-ideas-in-mask-matrix-generation.png)
+The sub-image give us "what to store" where as the matrix mask give us the info on where to restore that data (the position).
+A simple example:
 
+Mask matrix:
+
+0 1 0
+0 1 0
+0 0 0
+
+This tells the decoder:
+
+MCU at row 1, column 2 was modified
+MCU at row 2, column 2 was modified
+
+So during reconstruction, it replaces the processed DCT coefficients at those MCU positions with the original ones extracted from the stored sub-image.
+![Mask Matrix](./images/3-ideas-in-mask-matrix-generation.png)
+```
+In the paper, DCT matters because the recovery data is not just thought of as raw pixels. The method keeps the original DCT coefficients for the modified JPEG blocks and later puts those coefficients back during reconstruction.
+```
 ## Step-by-step JPEG Transmorphing
 ![Transmorphing1](./images/JPEG-Transmorphing-pt1.png)
 ![Transmorphing2](./images/JPEG-Transmorphing-pt2.png)
-
+```
