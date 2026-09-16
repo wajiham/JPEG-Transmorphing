@@ -327,7 +327,7 @@ This becomes important in transmorphing because if a change affects part of an M
 
 ---
 
-![Chroma Sampling and MCU (./Chroma-sampling-MCU.png)
+![Chroma Sampling and MCU](./Chroma-sampling-MCU.png)
 
 ## JPEG file structure
 
