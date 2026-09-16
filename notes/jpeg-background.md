@@ -356,7 +356,7 @@ Some important ones:
 - **EOI** — end of image
 
 
-What matters for now is understanding that a JPEG file has a proper internal structure and that extra application-specific data can also be stored inside it.
+ A JPEG file has a proper internal structure and that extra application-specific data can also be stored inside it.
 
 ---
 
