@@ -341,4 +341,4 @@ In the paper, DCT matters because the recovery data is not just thought of as ra
 ## Step-by-step JPEG Transmorphing
 ![Transmorphing1](./images/JPEG-Transmorphing-pt1.png)
 ![Transmorphing2](./images/JPEG-Transmorphing-pt2.png)
-```
+
