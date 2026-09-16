@@ -125,7 +125,7 @@ After dilation, the changed region becomes larger:
 ```
 
 The idea is not just to enlarge the region randomly. JPEG data is organized in blocks and MCUs, so if a small part of one MCU is changed, the paper treats the corresponding MCU as affected.This makes it easier to preserve and later replace the JPEG data for that region.
-![Dilation](./Dilation.png)
+![Dilation](/images/Dilation.png)
 
 ---
 
@@ -315,4 +315,8 @@ Higher threshold
 ```
 
 This is the balance the paper is trying to achieve. The goal is not simply to maximize reconstruction quality or minimize file size. It is to find a useful point between the two.
+
+## Step-by-step JPEG Transmorphing
+![Transmorphing1](/images/JPEG-Transmorphing-pt1)
+![Transmorphing2](/images/JPEG-Transmorphing-pt2)
 
