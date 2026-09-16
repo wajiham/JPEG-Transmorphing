@@ -334,8 +334,9 @@ MCU at row 2, column 2 was modified
 
 So during reconstruction, it replaces the processed DCT coefficients at those MCU positions with the original ones extracted from the stored sub-image.
 ![Mask Matrix](./images/3-ideas-in-mask-matrix-generation.png)
-```
+
 In the paper, DCT matters because the recovery data is not just thought of as raw pixels. The method keeps the original DCT coefficients for the modified JPEG blocks and later puts those coefficients back during reconstruction.
+```
 ```
 ## Step-by-step JPEG Transmorphing
 ![Transmorphing1](./images/JPEG-Transmorphing-pt1.png)
