@@ -336,8 +336,8 @@ So during reconstruction, it replaces the processed DCT coefficients at those MC
 ![Mask Matrix](./images/3-ideas-in-mask-matrix-generation.png)
 
 In the paper, DCT matters because the recovery data is not just thought of as raw pixels. The method keeps the original DCT coefficients for the modified JPEG blocks and later puts those coefficients back during reconstruction.
-```
-```
+
+
 ## Step-by-step JPEG Transmorphing
 ![Transmorphing1](./images/JPEG-Transmorphing-pt1.png)
 ![Transmorphing2](./images/JPEG-Transmorphing-pt2.png)
