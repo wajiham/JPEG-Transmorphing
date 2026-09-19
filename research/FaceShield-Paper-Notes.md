@@ -270,7 +270,7 @@ This prevents the attack from depending on one exact image arrangement.
 
 # Figure 2 — Adversarial Attack Flow
 
-![Figure 2 — FaceShield adversarial attack flow](images/figure2_adversarial_attack.png)
+![Figure 2 — FaceShield adversarial attack flow](./images/Adversarial-Attack-Algorithm.jpeg)
 
 The figure shows the main optimization loop used to create the protected face.
 
