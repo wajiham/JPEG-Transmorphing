@@ -605,6 +605,290 @@ Blend with original full-resolution image
     ↓
 Protected photograph
 ```
+---
+# FaceShield Paper Notes — Original Photo Recovery Tool
+
+---
+
+## 1. What the Recovery Tool Does
+
+After FaceShield protects a photo, the image is no longer exactly the same as the original.The Recovery Tool is used to reconstruct the original photo from the protected FaceShield image.
+
+---
+
+## 2. What Is the Delta Image?
+
+The Delta image stores the difference between:
+
+- the original image
+- the adversarial/protected image
+
+The paper defines it as:
+
+```text
+I_delta = (I_original - I_adversarial) + 128
+```
+---
+
+Suppose one original pixel has the value:
+
+```text
+100
+```
+
+After FaceShield protection, it becomes:
+
+```text
+105
+```
+
+The real difference is:
+
+```text
+100 - 105 = -5
+```
+
+So if we later know:
+
+```text
+Protected value = 105
+Difference = -5
+```
+
+we can recover the original:
+
+```text
+105 + (-5) = 100
+```
+
+This same idea is applied across the image.
+
+---
+
+## 3. Why Does the Paper Add 128?
+
+Normal 8-bit image values are usually stored in the range:
+
+```text
+0 to 255
+```
+
+But pixel differences can be negative.
+
+For example:
+
+```text
+100 - 105 = -5
+```
+
+A negative value like `-5` cannot be directly stored in a normal unsigned 8-bit image value.
+
+So FaceShield shifts the difference by adding 128:
+
+```text
+-5 + 128 = 123
+```
+
+Now the value fits inside the normal range.
+
+```text
+0 ----------- 128 ----------- 255
+               |
+          no difference
+```
+
+- below 128 → negative difference
+- exactly 128 → no difference
+- above 128 → positive difference
+
+---
+
+## 4. Why Is the Delta Stored as PNG?
+
+The Delta needs to preserve exact values. PNG is used because it supports **lossless** storage.
+
+### Lossy compression
+
+Lossy formats such as JPEG may slightly change image data to reduce file size. That is fine for normal photographs but not for recovery data.
+
+For example, if the correct Delta value is:
+
+```text
+123
+```
+
+and compression changes it to:
+
+```text
+121
+```
+
+the recovered pixel would be wrong.
+
+---
+
+## 5. Why the Delta Must Be Encrypted
+
+The Delta contains enough information to recover the original image.
+
+If FaceShield simply stored the Delta openly, anyone who had:
+
+```text
+Protected image
++
+Delta image
+```
+
+could reconstruct the original. That would defeat the privacy protection. So the Delta/recovery information is encrypted.
+
+The paper uses:
+
+```text
+AES-256-GCM
+```
+---
+
+---
+
+## 6. Where Is the Recovery Information Stored?
+
+FaceShield does not require a separate recovery file. Instead, the encrypted recovery information is stored inside the same JPEG file as the protected image.
+
+Conceptually:
+
+```text
+FaceShield JPEG
+│
+├── Protected image
+│
+└── Encrypted recovery information
+```
+
+A normal image viewer still displays the protected JPEG normally. FaceShield's Recovery Tool can also read the extra recovery information stored in the file.
+
+---
+
+## 7. JPEG APP11 Segments
+
+A JPEG file contains different internal sections called segments. Some of these are application-specific segments.
+
+FaceShield uses:
+
+```text
+APP11
+```
+
+segments to store the encrypted recovery payload. So the file contains normal JPEG image data plus additional FaceShield data.
+
+---
+
+There Can Be Multiple APP11 Segments. The encrypted recovery payload may be too large for one JPEG APP11 segment.
+
+So FaceShield can split it into several chunks.
+
+```text
+Encrypted recovery payload
+        ↓
+split into chunks
+        ↓
+APP11 part 1
+APP11 part 2
+APP11 part 3
+...
+```
+
+The chunks contain information that allows them to be put back in the correct order during recovery.
+
+---
+
+## 8. What the Recovery Tool Receives
+
+The Recovery Tool starts with a FaceShield JPEG.
+
+The file already contains:
+
+```text
+1. Protected image
+2. Encrypted recovery payload
+```
+
+The tool then reads the JPEG structure and looks for the FaceShield APP11 data.
+
+---
+
+The recovery process can be understood as:
+
+```text
+FaceShield JPEG
+      ↓
+Find APP11 recovery data
+      ↓
+Reconstruct encrypted payload
+      ↓
+Obtain the correct decryption key
+      ↓
+Decrypt recovery data
+      ↓
+Recover Delta image
+      ↓
+Use Delta + protected image
+      ↓
+Recover original image
+```
+
+---
+
+## 9. Recovery Equation
+
+The paper uses:
+
+```text
+I_original = I_adversarial + (I_delta - 128)
+```
+
+This is the reverse of the Delta creation process.
+
+The `-128` is important because the Delta was stored with a `+128` offset.
+
+Suppose:
+
+```text
+Original pixel = 100
+Protected pixel = 105
+```
+paper's recovery equation:
+
+```text
+105 + (123 - 128)
+= 105 + (-5)
+= 100
+```
+
+The original value is recovered exactly.
+
+---
+
+The same idea is applied across the image's pixel values. For a colour pixel, the process is applied to the colour channels.
+
+For example:
+
+```text
+Original RGB:
+[150, 120, 90]
+
+Protected RGB:
+[153, 118, 92]
+```
+
+The differences are:
+
+```text
+Red:   150 - 153 = -3
+Green: 120 - 118 =  2
+Blue:   90 - 92  = -2
+```
+
+These differences are stored with the +128 offset and later reversed during recovery.
 
 ---
 
