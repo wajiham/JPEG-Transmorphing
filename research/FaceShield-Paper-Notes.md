@@ -606,17 +606,17 @@ Blend with original full-resolution image
 Protected photograph
 ```
 ---
-# FaceShield Paper Notes — Original Photo Recovery Tool
+# Photo Recovery Tool
 
 ---
 
-## 1. What the Recovery Tool Does
+## 32. What the Recovery Tool Does
 
 After FaceShield protects a photo, the image is no longer exactly the same as the original.The Recovery Tool is used to reconstruct the original photo from the protected FaceShield image.
 
 ---
 
-## 2. What Is the Delta Image?
+## 33. What Is the Delta Image?
 
 The Delta image stores the difference between:
 
@@ -665,7 +665,7 @@ This same idea is applied across the image.
 
 ---
 
-## 3. Why Does the Paper Add 128?
+## 34. Why Does the Paper Add 128?
 
 Normal 8-bit image values are usually stored in the range:
 
@@ -703,7 +703,7 @@ Now the value fits inside the normal range.
 
 ---
 
-## 4. Why Is the Delta Stored as PNG?
+## 35. Why Is the Delta Stored as PNG?
 
 The Delta needs to preserve exact values. PNG is used because it supports **lossless** storage.
 
@@ -727,7 +727,7 @@ the recovered pixel would be wrong.
 
 ---
 
-## 5. Why the Delta Must Be Encrypted
+## 36. Why the Delta Must Be Encrypted
 
 The Delta contains enough information to recover the original image.
 
@@ -748,9 +748,7 @@ AES-256-GCM
 ```
 ---
 
----
-
-## 6. Where Is the Recovery Information Stored?
+## 37. Where Is the Recovery Information Stored?
 
 FaceShield does not require a separate recovery file. Instead, the encrypted recovery information is stored inside the same JPEG file as the protected image.
 
@@ -768,7 +766,7 @@ A normal image viewer still displays the protected JPEG normally. FaceShield's R
 
 ---
 
-## 7. JPEG APP11 Segments
+## 38. JPEG APP11 Segments
 
 A JPEG file contains different internal sections called segments. Some of these are application-specific segments.
 
@@ -801,7 +799,7 @@ The chunks contain information that allows them to be put back in the correct or
 
 ---
 
-## 8. What the Recovery Tool Receives
+## 39. What the Recovery Tool Receives
 
 The Recovery Tool starts with a FaceShield JPEG.
 
@@ -838,7 +836,7 @@ Recover original image
 
 ---
 
-## 9. Recovery Equation
+## 40. Recovery Equation
 
 The paper uses:
 
