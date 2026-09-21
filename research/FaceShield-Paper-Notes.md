@@ -16,8 +16,6 @@ The protected image is created using **adversarial perturbations**, which are sm
 
 ---
 
----
-
 ## 2. Image Processing
 
 **Image processing** means using a computer to analyse or modify an image.
