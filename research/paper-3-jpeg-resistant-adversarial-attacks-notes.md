@@ -187,6 +187,7 @@ the values change gradually.
 
 The image below illustrates this difference:
 
+![Interpolation](./images/paper3-Image1.png)
 
 
 ---
