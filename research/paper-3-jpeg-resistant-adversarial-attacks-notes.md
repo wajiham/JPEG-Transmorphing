@@ -399,9 +399,7 @@ Protected Image
    └── Model C
 ```
 
-An adversarial example created against one face-recognition system may not work equally well against another one.
-
-This is known as **transferability**.
+An adversarial example created against one face-recognition system may not work equally well against another one. This is known as **transferability**.
 
 The same research group later published work specifically aimed at improving adversarial attacks across different face-recognition models.
 
@@ -433,31 +431,8 @@ This could be especially relevant for an Android/iOS privacy-preserving applicat
 
 ---
 
-# Key Terms
-
-| Term | Simple Meaning |
-|---|---|
-| Adversarial image | An image intentionally modified to fool an AI model |
-| Perturbation | Small intentional change added to an image |
-| JPEG compression | Technique that reduces image file size by removing some image information |
-| Interpolation | Estimating pixel values when resizing an image |
-| Interpolation smoothing | Using resizing to reduce sharp adversarial changes |
-| High-frequency changes | Very rapid pixel changes that JPEG is more likely to remove |
-| Iterative attack | Generating an adversarial image through many small steps |
-| Transferability | Whether an adversarial image created for one AI model also works against other models |
-
----
-
 # Main Takeaway
 
 The main idea of the paper is:
 
 > **Do not create adversarial privacy protection using only tiny, fragile image changes. Generate smoother changes during the attack so that the protection has a better chance of surviving JPEG compression.**
-
-In simple terms:
-
-```text
-Tiny sharp changes = easily destroyed by JPEG
-
-Smoother spread-out changes = more likely to survive JPEG
-```
