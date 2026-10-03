@@ -1,4 +1,4 @@
-# Paper 3 Notes
+# Paper Notes
 ## Improving the JPEG-Resistance of Adversarial Attacks on Face Recognition
 
 ## Main Idea
