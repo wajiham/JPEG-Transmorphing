@@ -38,9 +38,7 @@ Will the privacy protection survive?
 
 An **adversarial image** is a normal-looking image that has been intentionally changed in a very small way so that an AI model makes a wrong prediction.
 
-For humans, the image still looks normal.
-
-For the AI model, however, these small changes can cause it to misclassify the image or fail to recognize the person.
+For humans, the image still looks normal. For the AI model, however, these small changes can cause it to misclassify the image or fail to recognize the person.
 
 ### Perturbation
 
@@ -54,25 +52,7 @@ Original Image + Small Perturbation = Adversarial Image
 
 # Q2. What problem did this paper identify?
 
-JPEG compression reduces the size of an image by removing some image information.
-
-In particular, JPEG can remove very small or fine image details.
-
-The problem is that many adversarial privacy methods depend heavily on exactly these tiny changes.
-
-Therefore:
-
-```text
-Adversarial protection
-        ↓
-JPEG compression
-        ↓
-Tiny changes removed
-        ↓
-Privacy protection becomes weaker
-```
-
-The authors identify JPEG compression as something that can significantly weaken adversarial face images.
+JPEG compression reduces the size of an image by removing some image information. In particular, JPEG can remove very small or fine image details. The authors explicitly identify JPEG compression as something that can significantly weaken adversarial face images.
 
 ---
 
@@ -107,11 +87,7 @@ Calculate the next privacy change
 112 × 112
 ```
 
-When an image becomes smaller, some very fine details disappear.
-
-When the smaller image is enlarged again, those details do not fully return.
-
-This creates a **smoothing effect**.
+When an image becomes smaller, some very fine details disappear. When the smaller image is enlarged again, those details do not fully return. This creates a **smoothing effect**.
 
 The paper calls this:
 
@@ -139,11 +115,7 @@ Now we enlarge it:
 ■ ? ? ■
 ```
 
-The computer must decide what values should replace the `?` pixels.
-
-It estimates those values based on nearby pixels.
-
-That estimation process is called **interpolation**.
+The computer must decide what values should replace the `?` pixels. It estimates those values based on nearby pixels. That estimation process is called **interpolation**.
 
 ---
 
@@ -157,9 +129,7 @@ Black White Black White Black White
 
 These are sharp changes between neighboring pixels.
 
-Now shrink the image.
-
-Because fewer pixels are available, nearby information gets combined.
+Now shrink the image. Because fewer pixels are available, nearby information gets combined.
 
 The result might become something closer to:
 
@@ -193,11 +163,7 @@ Conceptually:
 +1 -1 +1 -1 +1 -1
 ```
 
-The changes jump rapidly between brighter and darker values.
-
-These are called **high-frequency changes**.
-
-JPEG compression is likely to remove many of them.
+The changes jump rapidly between brighter and darker values. These are called **high-frequency changes**. JPEG compression is likely to remove many of them.
 
 ---
 
@@ -219,11 +185,9 @@ Instead of suddenly changing:
 
 the values change gradually.
 
-The diagram on page 2 of the notes illustrates this difference:
+The image below illustrates this difference:
 
-- normal adversarial changes contain many tiny sharp patterns;
-- smooth adversarial changes contain larger, more gradual areas;
-- after JPEG compression, more of the smooth changes remain.
+
 
 ---
 
