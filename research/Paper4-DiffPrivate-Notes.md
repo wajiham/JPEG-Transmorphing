@@ -4,7 +4,9 @@
 
 DiffPrivate proposes **two different ways to protect a face** from face-recognition systems while keeping the resulting image natural-looking to humans.
 
-![DiffPrivate: Two Privacy Protection Approaches](./images/DiffPrivate.png)
+<p align="center">
+  <img src="./images/DiffPrivate.png" width="700">
+</p>
 
 ---
 
