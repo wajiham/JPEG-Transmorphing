@@ -125,7 +125,7 @@ After dilation, the changed region becomes larger:
 ```
 
 The idea is not just to enlarge the region randomly. JPEG data is organized in blocks and MCUs, so if a small part of one MCU is changed, the paper treats the corresponding MCU as affected.This makes it easier to preserve and later replace the JPEG data for that region.
-![Dilation](./images/Dilation.png)
+![Dilation](./assets/images/Dilation.png)
 
 ---
 
@@ -333,12 +333,12 @@ MCU at row 1, column 2 was modified
 MCU at row 2, column 2 was modified
 
 So during reconstruction, it replaces the processed DCT coefficients at those MCU positions with the original ones extracted from the stored sub-image.
-![Mask Matrix](./images/3-ideas-in-mask-matrix-generation.png)
+![Mask Matrix](./assets/images/3-ideas-in-mask-matrix-generation.png)
 
 In the paper, DCT matters because the recovery data is not just thought of as raw pixels. The method keeps the original DCT coefficients for the modified JPEG blocks and later puts those coefficients back during reconstruction.
 
 
 ## Step-by-step JPEG Transmorphing
-![Transmorphing1](./images/JPEG-Transmorphing-pt1.png)
-![Transmorphing2](./images/JPEG-Transmorphing-pt2.png)
+![Transmorphing1](./assets/images/JPEG-Transmorphing-pt1.png)
+![Transmorphing2](./assets/images/JPEG-Transmorphing-pt2.png)
 
